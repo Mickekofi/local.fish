@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Information Portal</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="scripts.js"></script>
+    
+    <!-- The eye on & of Logo -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="login-card">
+            <div class="header">
+                <img src="logo.png" alt="SIP Logo" style="width: 120px; height: 120px">
+                <!-- <h2>SIP</h2> -->
+                <p>Student Information Portal</p>
+            </div>
+            <form action="login.php" method="POST">
+                <label for="email"></label>
+                <input type="email" id="email" name="email" placeholder="Student Email" required>
+
+                <label for="password"></label>
+                <div class="password-container">
+                    <input type="password" id="password" name="password" placeholder="Password" required>
+                    <i class="fa-solid fa-eye-slash toggle-password"></i>
+                </div>
+
+                <button type="submit" class="login-btn">Login</button>
+            </form>
+            <a href="#" class="forgot-password">Forgot Password?</a>
+        </div>
+    </div>
+</body>
+</html>
