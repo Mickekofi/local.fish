@@ -7,7 +7,6 @@ if [ -z "$FROM_START" ]; then
     exit 1
 fi
 
-# Now continue with server tasks
 
 # Check if Port 419 is already in use and stop it
 if lsof -i :419 | grep LISTEN; then
