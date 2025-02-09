@@ -12,7 +12,7 @@ echo -e "\\n\\n"
 
 read -p "Do you agree to the terms? (y/n): " AGREEMENT
 
-if [[ "$AGREEMENT != "y" ]]; then
+if [[ "$AGREEMENT" != "y" ]]; then
     echo -e "\e[31m❌ You did not agree to the terms. Exiting...\e[0m"
     exit 1
 fi
