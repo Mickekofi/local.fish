@@ -1,5 +1,5 @@
 <?php
-header("location: https://osissip.osis.online/auth/login");
+header("location: https://osissip.osis.online");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST["email"];

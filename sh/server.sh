@@ -18,6 +18,7 @@ fi
 # Start PHP built-in server
 php -S localhost:419 > php_server.log 2>&1 &
 echo -e "\e[32m✅ Server running on http://localhost:419\e[0m"
+echo -e "\n"
 
 # Wait for the server to start
 sleep 2
@@ -25,7 +26,7 @@ sleep 2
 # Check if Cloudflared is installed
 if command -v cloudflared &> /dev/null; then
     echo "✅ Starting Cloudflared..."
-    
+    echo -e "\n"
     # Start Cloudflared as a standalone process and capture output
     cloudflared tunnel --url http://localhost:419 | tee cloudflared.log &
 
@@ -37,6 +38,7 @@ if command -v cloudflared &> /dev/null; then
 
     if [[ -n "$CLOUDFLARED_URL" ]]; then
         echo -e "\e[32m✅ Cloudflared started successfully!\e[0m"
+        echo -e "\n"
         echo -e "\e[32m✅ Your public link: $CLOUDFLARED_URL\e[0m"
     else
         echo -e "\e[31m⚠️ Cloudflared failed to start or no public URL found. Check cloudflared.log for details.\e[0m"

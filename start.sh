@@ -19,7 +19,7 @@ fi
 
 echo -e "\\n\\n"
 
-echo -e "\e[32mFISHKISSFISHKIS               
+echo -e "\e[33mFISHKISSFISHKIS               
        SFISHKISSFISHKISSFISH            F
     ISHK   ISSFISHKISSFISHKISS         FI
   SHKISS   FISHKISSFISHKISSFISS       FIS
@@ -33,7 +33,7 @@ SSFISHKISSFISHKISSFISHKISSFISHKIS    SFIS
        SFISHKISSFISHKISSFISH            K
          ISSFISHKISSFISHKIS               \e[0m"
 
-echo -e "\\n"
+echo -e "\n"
 echo -e "\e[32mWelcome to the Local.Fish; An Internal Students Regulated Cyber Tool Intended to Educate, Create Awareness and Engage a Community of all Faculty Individuals who Passion for Cyber Security and it Related Fields.\e[0m"
 
 if curl --silent --fail "$GITHUB_URL" > /dev/null; then
@@ -48,13 +48,13 @@ fi
 
 # 🔹 2nd Checker: Verify if User has Starred the Repository
 
-echo -e "//n"
+echo -e "\n"
 
 read -p "Enter your GitHub username: " USERNAME
 STARRED=$(curl -s -H "Accept: application/vnd.github.v3+json" "https://api.github.com/users/$USERNAME/starred" | grep "$REPO_NAME")
 
 if [[ -n "$STARRED" ]]; then
-    echo "\n"
+    echo -e "\n"
 else
     echo -e "\e[31m❌ You must Star 🌟 the Repository/Project on Github Before proceeding.\e[0m"
 
@@ -66,6 +66,7 @@ fi
 read -p "Enter your School email: " EMAIL
 if [[ "$EMAIL" =~ ^[0-9]{10}@st\.uew\.edu\.gh$ ]]; then
     echo -e "\e[32m✅ Successfully Verified! Proceeding...\e[0m"
+    
 else
     echo -e "\e[31m❌ Invalid index number format! Access Denied.\e[0m"
     exit 1
