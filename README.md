@@ -19,7 +19,7 @@
 
 # Introduction
 
-- Welcome to **Local.Fish**; An Internal Students Regulated Cyber Tool Intended to Educate, Create Awareness and Engage a Community of all Faculty Individuals who Passion for Cyber Security and it Related Fields. 
+- Welcome to **Local.Fish**; An Internal(∆ 𝐔𝐧𝐢𝐯𝐞𝐫𝐬𝐢𝐭𝐲 𝐨𝐟 𝐄𝐝𝐮𝐜𝐚𝐭𝐢𝐨𝐧, 𝐖𝐢𝐧𝐧𝐞𝐛𝐚.) Students Regulated Cyber Tool Intended to Educate, Create Awareness and Engage a Community of all Faculty Individuals who Passion for Cyber Security and it Related Fields. 
 
 - Our true Purpose of this Project lies behind the great documentations we have designed; To be Understood by all levels and used as an Instructional Educative guide to alarm the urgent need for Digital literacy and address combating Cyber Crime.
 
@@ -42,3 +42,121 @@
 
 # Instalation
 
+- Follow the steps below to install **Local.Fish** on your preferred environment.
+
+## On 📱 Android
+
+1) **Install Termux** from Here;
+
+2) Update and Upgrade Packages
+
+```sh
+pkg update && pkg upgrade
+
+```
+
+3) Install Required Packages
+
+```sh
+pkg install php git curl openssh
+
+```
+
+4) Installing Cloudflared(Server [1])
+
+```sh
+pkg install cloudflared -y
+```
+
+5) Installing Ngrok(Server [2])
+
+```sh
+pkg install ngrok -y
+```
+
+6) Clone the Repository
+
+```sh
+git clone https://github.com/Mickekofi/local.fish.git
+```
+
+7) Navigate to the Project Directory
+
+```sh
+cd Local.Fish
+```
+
+8) Start the Tool
+
+```sh
+bash start.sh
+```
+
+## On Linux 🐧 
+
+1) Update and Upgrade Packages
+
+```sh
+sudo apt update && sudo apt upgrade -y
+```
+
+2) Install Required Packages
+
+```sh
+sudo apt install php git curl openssh -y
+```
+
+3) Installing Cloudflared(Server [1])
+
+```sh
+curl -LO https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64
+```
+
+```sh
+sudo mv cloudflared-linux-amd64 /usr/local/bin/cloudflared
+sudo chmod +x /usr/local/bin/cloudflared
+```
+
+4) Installing Ngrok(Server [2])
+
+ 
+
+5) Clone the Repository
+
+```sh
+git clone https://github.com/Mickekofi/local.fish.git
+```
+
+6) Navigate to the Project Directory
+
+```sh
+cd Local.Fish
+```
+
+7) Start the Tool
+
+```sh
+bash start.sh
+```
+
+## On Windows 🖥️
+
+1) Download and install Git Bash from https://git-scm.com/downloads or enable WSL via Windows Features
+
+
+2) Download PHP from https://windows.php.net/download/ and configure it in the PATH environment variable
+
+3) Install Required Tools
+
+- Download and install curl (https://curl.se/download.html) and OpenSSH (https://docs.microsoft.com/en-us/windows-server/administration/openssh/openssh_install_firstuse)
+
+4) Download from https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/installation/
+
+5) Clone the Repository
+git clone https://github.com/your-repo/Local.Fish.git
+
+ Navigate to the Project Directory
+cd Local.Fish
+
+# Start the Tool
+bash start.sh
