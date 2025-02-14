@@ -158,5 +158,5 @@ git clone https://github.com/your-repo/Local.Fish.git
  Navigate to the Project Directory
 cd Local.Fish
 
-# Start the Tool
+6) Start the Tool
 bash start.sh
