@@ -7,7 +7,6 @@ if [ -z "$FROM_START" ]; then
     exit 1
 fi
 
-
 # Check if Port 419 is already in use and stop it
 if lsof -i :419 | grep LISTEN; then
     echo "Port 419 is already in use. Stopping existing process..."
@@ -15,7 +14,7 @@ if lsof -i :419 | grep LISTEN; then
     sleep 2
 fi
 
-# Start PHP built-in server
+# Start PHP built-in server with logging
 php -S localhost:419 > php_server.log 2>&1 &
 echo -e "\e[32m✅ Server running on http://localhost:419\e[0m"
 echo -e "\n"
@@ -23,26 +22,74 @@ echo -e "\n"
 # Wait for the server to start
 sleep 2
 
-# Check if Cloudflared is installed
-if command -v cloudflared &> /dev/null; then
-    echo "✅ Starting Cloudflared..."
-    echo -e "\n"
-    # Start Cloudflared as a standalone process and capture output
-    cloudflared tunnel --url http://localhost:419 | tee cloudflared.log &
+# Menu for tunneling options
+echo -e "\e[34mPlease select a tunneling option:\e[0m"
+echo "1. Cloudflared"
+echo "2. Ngrok"
+echo "3. Localhost.run"
+read -p "Enter your choice (1/2/3): " TUNNEL_OPTION
 
-    # Wait a few seconds for Cloudflared to establish the tunnel
-    sleep 5
-
-    # Extract the public URL
-    CLOUDFLARED_URL=$(grep -o 'https://[^ ]*\.trycloudflare.com' cloudflared.log | head -n 1)
-
-    if [[ -n "$CLOUDFLARED_URL" ]]; then
-        echo -e "\e[32m✅ Cloudflared started successfully!\e[0m"
+case $TUNNEL_OPTION in
+    1)
+        # Cloudflared
+        if command -v cloudflared &> /dev/null; then
+            echo "✅ Starting Cloudflared..."
+            echo -e "\n"
+            cloudflared tunnel --url http://localhost:419 | tee cloudflared.log &
+            sleep 5
+            CLOUDFLARED_URL=$(grep -o 'https://[^ ]*\.trycloudflare.com' cloudflared.log | head -n 1)
+            if [[ -n "$CLOUDFLARED_URL" ]]; then
+                echo -e "\e[32m✅ Cloudflared started successfully!\e[0m"
+                echo -e "\e[32m✅ Your public link: $CLOUDFLARED_URL\e[0m"
+            else
+                echo -e "\e[31m⚠️ Cloudflared failed to start or no public URL found. Check cloudflared.log for details.\e[0m"
+            fi
+        else
+            echo -e "\e[31m❌ Cloudflared is not installed. Please install it first.\e[0m"
+        fi
+        ;;
+    2)
+        # Ngrok
+        if command -v ngrok &> /dev/null; then
+            echo "✅ Starting Ngrok..."
+            echo -e "\n"
+            ngrok http 419 > ngrok.log 2>&1 &
+            sleep 5
+            NGROK_URL=$(curl -s http://127.0.0.1:4040/api/tunnels | grep -o 'https://[^,]*' | head -n 1)
+            if [[ -n "$NGROK_URL" ]]; then
+                echo -e "\e[32m✅ Ngrok started successfully!\e[0m"
+                echo -e "\e[32m✅ Your public link: $NGROK_URL\e[0m"
+            else
+                echo -e "\e[31m⚠️ Ngrok failed to start or no public URL found. Check ngrok.log for details.\e[0m"
+            fi
+        else
+            echo -e "\e[31m❌ Ngrok is not installed. Please install it first.\e[0m"
+        fi
+        ;;
+    3)
+        # Localhost.run
+        echo "✅ Starting Localhost.run..."
         echo -e "\n"
-        echo -e "\e[32m✅ Your public link: $CLOUDFLARED_URL\e[0m"
-    else
-        echo -e "\e[31m⚠️ Cloudflared failed to start or no public URL found. Check cloudflared.log for details.\e[0m"
+        ssh -R 80:localhost:419 ssh.localhost.run
+        ;;
+    *)
+        echo -e "\e[31m❌ Invalid option selected. Exiting...\e[0m"
+        exit 1
+        ;;
+esac
+
+# Monitor and alert for new activity
+echo -e "\n\e[34m🔍 Monitoring server for activity... Press Ctrl+C to stop.\e[0m"
+
+# Loop to check for updates in the log file
+LOG_FILE="php_server.log"
+LAST_LINE=""
+
+while true; do
+    NEW_LINE=$(tail -n 1 $LOG_FILE)
+    if [[ "$NEW_LINE" != "$LAST_LINE" && -n "$NEW_LINE" ]]; then
+        echo -e "\e[32m[ALERT] New interaction detected: $NEW_LINE\e[0m"
+        LAST_LINE="$NEW_LINE"
     fi
-else
-    echo -e "\e[31m❌ Cloudflared is not installed. Running only on localhost.\e[0m"
-fi
+    sleep 1
+done
