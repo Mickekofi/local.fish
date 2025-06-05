@@ -19,7 +19,7 @@
 
 # Introduction
 
-- Welcome to **Local.Fish**; An Internal(∆ 𝐔𝐧𝐢𝐯𝐞𝐫𝐬𝐢𝐭𝐲 𝐨𝐟 𝐄𝐝𝐮𝐜𝐚𝐭𝐢𝐨𝐧, 𝐖𝐢𝐧𝐧𝐞𝐛𝐚.) Students Regulated Cyber Tool Intended to Educate, Create Awareness and Engage a Community of all Faculty Individuals who Passion for Cyber Security and it Related Fields. 
+- Welcome to **Local.Fish** aka- **Hacker SIP**; An Internal(∆ 𝐔𝐧𝐢𝐯𝐞𝐫𝐬𝐢𝐭𝐲 𝐨𝐟 𝐄𝐝𝐮𝐜𝐚𝐭𝐢𝐨𝐧, 𝐖𝐢𝐧𝐧𝐞𝐛𝐚.) Students Regulated Cyber Tool Intended to Educate, Create Awareness and Engage a Community of all Faculty Individuals who Passion for Cyber Security and it Related Fields. 
 
 - Our true Purpose of this Project lies behind the great documentations we have designed; To be Understood by all levels and used as an Instructional Educative guide to alarm the urgent need for Digital literacy and address combating Cyber Crime.
 
@@ -92,7 +92,7 @@ cd Local.Fish
 bash start.sh
 ```
 
-## On Linux 🐧 
+## On Linux 🐧 & Windows (with Subsystems🖥️ ...
 
 1) Update and Upgrade Packages
 
@@ -139,24 +139,7 @@ cd Local.Fish
 bash start.sh
 ```
 
-## On Windows 🖥️
+- **🕯️Security Features ...**
+*1. This tool automatically shuts down and gets deleted or Uninstalled Onces Project is not Terminated.*
 
-1) Download and install Git Bash from https://git-scm.com/downloads or enable WSL via Windows Features
-
-
-2) Download PHP from https://windows.php.net/download/ and configure it in the PATH environment variable
-
-3) Install Required Tools
-
-- Download and install curl (https://curl.se/download.html) and OpenSSH (https://docs.microsoft.com/en-us/windows-server/administration/openssh/openssh_install_firstuse)
-
-4) Download from https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/installation/
-
-5) Clone the Repository
-git clone https://github.com/your-repo/Local.Fish.git
-
- Navigate to the Project Directory
-cd Local.Fish
-
-6) Start the Tool
-bash start.sh
+*2. You will need Internet to run this too else moving further without Internet gets this tool uninstalled from you device*
