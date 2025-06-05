@@ -140,6 +140,7 @@ bash start.sh
 ```
 
 - **🕯️Security Features ...**
+  
 *1. This tool automatically shuts down and gets deleted or Uninstalled Onces Project is not Terminated.*
 
 *2. You will need Internet to run this too else moving further without Internet gets this tool uninstalled from you device*
